@@ -6494,7 +6494,7 @@ a.text-theme:hover,
 }
 
 .header-layout7 .main-menu ul li.menu-item-has-children > a:after {
-  content: "\2b";
+  content: "\f078";
   font-size: 12px;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
