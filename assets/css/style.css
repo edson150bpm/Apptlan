@@ -1524,8 +1524,8 @@ textarea.is-invalid {
 }
 
 .swiper-fade .swiper-slide {
-  -webkit-transition: 0.6s ease-in-out;
-  transition: 0.6s ease-in-out;
+  -webkit-transition: 0.9s ease-in-out;
+  transition: 0.9s ease-in-out;
 }
 
 .swiper-fade .swiper-slide-prev {
@@ -9435,6 +9435,7 @@ ul.comment-list .th-comment-item:first-child > .th-post-comment {
 
 .hero-text {
   margin-bottom: 43px;
+  font-size: 20px;
 }
 
 .hero-1 {
