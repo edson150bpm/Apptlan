@@ -40,7 +40,20 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-
+    <style>
+        .bg-dark {
+            background-color: #343a40 !important;
+        }
+        .font-weight-bold {
+            font-weight: 700 !important;
+        }
+        .text-end {
+            text-align: right !important;
+        }
+        .card {
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 
 <body class="theme-blue2">
@@ -127,16 +140,26 @@
                     </div>
                 </div>
             </div>
+            <div class="header-top">
+                <div class="container">
+                    <div class="row justify-content-center justify-content-lg-between align-items-center gy-2">
+                        <div class="col-auto d-none d-lg-block">
+                            <div class="header-links">
+                                <ul>
+                                    <h5 class="text-white">Cotización de chatbot</h5>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <h5 class="text-end text-white">Costo Total: $<span id="totalCost">0</span></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
     
-
-    <div class="container my-5" id="quotation-section">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h2 class="sec-title">Cotización de chatbot</h2>
-            </div>
-        </div>
+    <div class="container" id="quotation-section">
         <div class="overflow-hidden space">
             <div class="container">
                 <div class="row align-items-center">
@@ -258,171 +281,202 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="achivement-box-area filter-active-cat2">
-                            <!-- Similar structure for Super Chatbot -->
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
         
-
-        <div class="row mb-4">
-            <div class="col-12">
-                <h5 class="mb-3">Añadir elementos</h5>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Elementos</th>
-                            <th>Descripción/Ejemplo</th>
-                            <th>Costo</th>
-                            <th>Acción</th>
-                        </tr>
-                    </thead>
-                    <tbody id="featureTable">
-                        <tr>
-                            <td class="font-weight-bold text-white bg-dark">
-                                Estructura del flujo
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Ramificación pequeña</td>
-                            <td>2 a 4 elementos</td>
-                            <td>$1,000 MXN</td>
-                            <td><button class="btn btn-primary add-feature" data-element="Ramificación pequeña" data-cost="1000">Añadir</button></td>
-                        </tr>
-                        <tr>
-                            <td>Ramificación mediana</td>
-                            <td>5 a 10 elementos</td>
-                            <td>$3,000 MXN</td>
-                            <td><button class="btn btn-primary add-feature" data-element="Ramificación mediana" data-cost="3000">Añadir</button></td>
-                        </tr>
-                        <tr>
-                            <td>Ramificación grande</td>
-                            <td>11 o más elementos</td>
-                            <td>$5,000 MXN</td>
-                            <td><button class="btn btn-primary add-feature" data-element="Ramificación grande" data-cost="5000">Añadir</button></td>
-                        </tr>
-                        <tr>
-                            <td>Nivel de profundidad</td>
-                            <td>No cuentan saludos, despedidas o resultados a procesos.</td>
-                            <td>$3,000 MXN</td>
-                            <td><button class="btn btn-primary add-feature" data-element="Nivel de profundidad" data-cost="3000">Añadir</button></td>
-                        </tr>
-                        <tr>
-                            <td>Input</td>
-                            <td>Secuencia de entrada de datos para un mismo proceso sin ramificación.</td>
-                            <td>$3,000 MXN</td>
-                            <td><button class="btn btn-primary add-feature" data-element="Input" data-cost="3000">Añadir</button></td>
-                        </tr>
-                        <tr>
-                            <td>Respuesta</td>
-                            <td>No se cobra, se considera como parte de un proceso.</td>
-                            <td>$0 MXN</td>
-                            <td><button class="btn btn-primary add-feature" data-element="Respuesta" data-cost="0">Añadir</button></td>
-                        </tr>
-                        <tr>
-                            <td>Decisión</td>
-                            <td>No lleva costo por añadir.</td>
-                            <td>$0 MXN</td>
-                            <td><button class="btn btn-primary add-feature" data-element="Decisión" data-cost="0">Añadir</button></td>
-                        </tr>
-                        <tr>
-                            <td>Proceso</td>
-                            <td>No lleva costo por añadir.</td>
-                            <td>$0 MXN</td>
-                            <td><button class="btn btn-primary add-feature" data-element="Proceso" data-cost="0">Añadir</button></td>
-                        </tr>
-                        <tr>
-                            <td class="font-weight-bold text-white bg-dark">
-                                Integraciones
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Integración simple</td>
-                            <td>Autentificaciones básicas, conexión a base datos externa o apertura para obtención de base local, etc.</td>
-                            <td>$2,000 MXN</td>
-                            <td><button class="btn btn-primary add-feature" data-element="Integración simple" data-cost="2000">Añadir</button></td>
-                        </tr>
-                        <tr>
-                            <td>Integración compleja</td>
-                            <td>Multi-login, manejo de token externo, envío de información a un punto en múltiples pasos, sincronización de datos multi-sistema, etc.</td>
-                            <td>Desde $4,000 MXN</td>
-                            <td><button class="btn btn-primary add-feature" data-element="Integración compleja" data-cost="4000">Añadir</button></td>
-                        </tr>
-                        <tr>
-                            <td class="font-weight-bold text-white bg-dark">
-                                Modelo
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Modelo de IA personalizado, recepción de datos</td>
-                            <td>Entrenado a la medida según la lógica de negocio única de cada cliente.</td>
-                            <td>Se cobrará lo que cueste la estructura.</td>
-                            <td><button class="btn btn-primary add-feature" data-element="Modelo de IA personalizado, recepción de datos" data-cost="0">Añadir</button></td>
-                        </tr>
-                        <tr>
-                            <td>Modelo de IA personalizado, respuestas generativas</td>
-                            <td>Entrenado a la medida según la lógica de negocio única de cada cliente.</td>
-                            <td>Actualmente no disponible.</td>
-                            <td><button class="btn btn-primary add-feature" data-element="Modelo de IA personalizado, respuestas generativas" data-cost="0">Añadir</button></td>
-                        </tr>
-                        <tr>
-                            <td>GPT</td>
-                            <td>Varía según los costos de GPT.</td>
-                            <td>Dependiente de GPT.</td>
-                            <td><button class="btn btn-primary add-feature" data-element="GPT" data-cost="0">Añadir</button></td>
-                        </tr>
-                        <tr>
-                            <td>Sin IA</td>
-                            <td>Se utilizan botones para la navegación.</td>
-                            <td>$0 MXN</td>
-                            <td><button class="btn btn-primary add-feature" data-element="Sin IA" data-cost="0">Añadir</button></td>
-                        </tr>
-                        <tr>
-                            <td class="font-weight-bold text-white bg-dark">
-                                Otros
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Documentos y multimedia</td>
-                            <td>Guardado de documentos estaticos en nuestro servidor.</td>
-                            <td>$1,000 MXN base, + $1,000 MXN por cada GB (GigaByte)</td>
-                            <td><button class="btn btn-primary add-feature" data-element="Documentos y multimedia" data-cost="1000">Añadir</button></td>
-                        </tr>
-                        <tr>
-                            <td>Identificación de usuarios</td>
-                            <td>Guardado de datos de cada usuario, conversaciones, sesiones, número y nombre en WhatsApp, etc.</td>
-                            <td>$3,000 MXN</td>
-                            <td><button class="btn btn-primary add-feature" data-element="Identificación de usuarios" data-cost="3000">Añadir</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        
-        <div class="row mb-4">
-            <div class="col-12">
-                <h5 class="mb-3">Elementos Seleccionados</h5>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Elemento</th>
-                            <th>Costo</th>
-                            <th>Acción</th>
-                        </tr>
-                    </thead>
-                    <tbody id="selectedFeatures">
-                        <!-- Selected features will be added here dynamically -->
-                    </tbody>
-                </table>
-                <h5 class="text-end">Total Cost: $<span id="totalCost">0</span></h5>
-            </div>
-        </div>
-    
-        <div class="row">
-            <div class="col-12 text-center">
-                <button class="btn btn-success" id="getQuoteBtn">Generar Cotización</button>
+        <div class="container mt-5 mb-5">
+            <div class="row">
+                <!-- Section to add elements -->
+                <div class="col-md-6">
+                    <h5 class="mb-3">Añadir elementos</h5>
+                    
+                    <!-- Estructura del flujo -->
+                    <div class="card bg-dark text-white" data-toggle="collapse" href="#estructuraFlujoCollapse" role="button" aria-expanded="false" aria-controls="estructuraFlujoCollapse">
+                        <div class="card-body font-weight-bold">
+                            Estructura del flujo
+                        </div>
+                    </div>
+                    <div class="collapse" id="estructuraFlujoCollapse">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Ramificación pequeña</h5>
+                                <p class="card-text">2 a 4 elementos</p>
+                                <p class="card-text font-weight-bold">$1,000 MXN</p>
+                                <button class="btn btn-primary add-feature" data-element="Ramificación pequeña" data-cost="1000">Añadir</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Ramificación mediana</h5>
+                                <p class="card-text">5 a 10 elementos</p>
+                                <p class="card-text font-weight-bold">$3,000 MXN</p>
+                                <button class="btn btn-primary add-feature" data-element="Ramificación mediana" data-cost="3000">Añadir</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Ramificación grande</h5>
+                                <p class="card-text">11 o más elementos</p>
+                                <p class="card-text font-weight-bold">$5,000 MXN</p>
+                                <button class="btn btn-primary add-feature" data-element="Ramificación grande" data-cost="5000">Añadir</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Nivel de profundidad</h5>
+                                <p class="card-text">No cuentan saludos, despedidas o resultados a procesos.</p>
+                                <p class="card-text font-weight-bold">$3,000 MXN</p>
+                                <button class="btn btn-primary add-feature" data-element="Nivel de profundidad" data-cost="3000">Añadir</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Input</h5>
+                                <p class="card-text">Secuencia de entrada de datos para un mismo proceso sin ramificación.</p>
+                                <p class="card-text font-weight-bold">$3,000 MXN</p>
+                                <button class="btn btn-primary add-feature" data-element="Input" data-cost="3000">Añadir</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Respuesta</h5>
+                                <p class="card-text">No se cobra, se considera como parte de un proceso.</p>
+                                <p class="card-text font-weight-bold">$0 MXN</p>
+                                <button class="btn btn-primary add-feature" data-element="Respuesta" data-cost="0">Añadir</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Decisión</h5>
+                                <p class="card-text">No lleva costo por añadir.</p>
+                                <p class="card-text font-weight-bold">$0 MXN</p>
+                                <button class="btn btn-primary add-feature" data-element="Decisión" data-cost="0">Añadir</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Proceso</h5>
+                                <p class="card-text">No lleva costo por añadir.</p>
+                                <p class="card-text font-weight-bold">$0 MXN</p>
+                                <button class="btn btn-primary add-feature" data-element="Proceso" data-cost="0">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Integraciones -->
+                    <div class="card bg-dark text-white" data-toggle="collapse" href="#integracionesCollapse" role="button" aria-expanded="false" aria-controls="integracionesCollapse">
+                        <div class="card-body font-weight-bold">
+                            Integraciones
+                        </div>
+                    </div>
+                    <div class="collapse" id="integracionesCollapse">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Integración simple</h5>
+                                <p class="card-text">Autentificaciones básicas, conexión a base datos externa o apertura para obtención de base local, etc.</p>
+                                <p class="card-text font-weight-bold">$2,000 MXN</p>
+                                <button class="btn btn-primary add-feature" data-element="Integración simple" data-cost="2000">Añadir</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Integración compleja</h5>
+                                <p class="card-text">Multi-login, manejo de token externo, envío de información a un punto en múltiples pasos, sincronización de datos multi-sistema, etc.</p>
+                                <p class="card-text font-weight-bold">Desde $4,000 MXN</p>
+                                <button class="btn btn-primary add-feature" data-element="Integración compleja" data-cost="4000">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Modelo -->
+                    <div class="card bg-dark text-white" data-toggle="collapse" href="#modeloCollapse" role="button" aria-expanded="false" aria-controls="modeloCollapse">
+                        <div class="card-body font-weight-bold">
+                            Modelo
+                        </div>
+                    </div>
+                    <div class="collapse" id="modeloCollapse">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Modelo de IA personalizado, recepción de datos</h5>
+                                <p class="card-text">Entrenado a la medida según la lógica de negocio única de cada cliente.</p>
+                                <p class="card-text font-weight-bold">Se cobrará lo que cueste la estructura.</p>
+                                <button class="btn btn-primary add-feature" data-element="Modelo de IA personalizado, recepción de datos" data-cost="0">Añadir</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Modelo de IA personalizado, respuestas generativas</h5>
+                                <p class="card-text">Entrenado a la medida según la lógica de negocio única de cada cliente.</p>
+                                <p class="card-text font-weight-bold">Actualmente no disponible.</p>
+                                <button class="btn btn-primary add-feature" data-element="Modelo de IA personalizado, respuestas generativas" data-cost="0">Añadir</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">GPT</h5>
+                                <p class="card-text">Varía según los costos de GPT.</p>
+                                <p class="card-text font-weight-bold">Dependiente de GPT.</p>
+                                <button class="btn btn-primary add-feature" data-element="GPT" data-cost="0">Añadir</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Sin IA</h5>
+                                <p class="card-text">Se utilizan botones para la navegación.</p>
+                                <p class="card-text font-weight-bold">$0 MXN</p>
+                                <button class="btn btn-primary add-feature" data-element="Sin IA" data-cost="0">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Otros -->
+                    <div class="card bg-dark text-white" data-toggle="collapse" href="#otrosCollapse" role="button" aria-expanded="false" aria-controls="otrosCollapse">
+                        <div class="card-body font-weight-bold">
+                            Otros
+                        </div>
+                    </div>
+                    <div class="collapse" id="otrosCollapse">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Documentos y multimedia</h5>
+                                <p class="card-text">Guardado de documentos estaticos en nuestro servidor.</p>
+                                <p class="card-text font-weight-bold">$1,000 MXN base, + $1,000 MXN por cada GB (GigaByte)</p>
+                                <button class="btn btn-primary add-feature" data-element="Documentos y multimedia" data-cost="1000">Añadir</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Identificación de usuarios</h5>
+                                <p class="card-text">Guardado de datos de cada usuario, conversaciones, sesiones, número y nombre en WhatsApp, etc.</p>
+                                <p class="card-text font-weight-bold">$3,000 MXN</p>
+                                <button class="btn btn-primary add-feature" data-element="Identificación de usuarios" data-cost="3000">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Section to show selected elements and Costo Total -->
+                <div class="col-md-6">
+                    <h5 class="mb-3">Elementos Seleccionados</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Elemento</th>
+                                <th>Costo</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="selectedFeatures">
+                            <!-- Selected features will be added here dynamically -->
+                        </tbody>
+                    </table>
+                    <h5 class="text-end">Costo Total: $<span id="totalCost2">0</span></h5>
+                    <div class="text-center">
+                        <button class="btn btn-success" id="generatePdfBtn">Generar Cotización</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -572,77 +626,58 @@
     <!-- Main Js File -->
     <script src="assets/js/main.js"></script>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const featureTable = document.getElementById('featureTable');
+        document.addEventListener('DOMContentLoaded', () => {
+            const featureCards = document.querySelectorAll('.add-feature');
             const selectedFeatures = document.getElementById('selectedFeatures');
-            const totalCostElement = document.getElementById('totalCost');
             let totalCost = 0;
     
-            featureTable.addEventListener('click', function (event) {
-                if (event.target.classList.contains('add-feature')) {
-                    const element = event.target.dataset.element;
-                    const cost = parseInt(event.target.dataset.cost);
+            featureCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const element = card.getAttribute('data-element');
+                    const cost = parseInt(card.getAttribute('data-cost'));
+    
+                    totalCost += cost;
     
                     const row = document.createElement('tr');
                     row.innerHTML = `
                         <td>${element}</td>
-                        <td>$${cost}</td>
-                        <td><button class="btn btn-danger remove-feature" data-cost="${cost}">Remove</button></td>
+                        <td>${cost} MXN</td>
+                        <td><button class="btn btn-danger remove-feature" data-cost="${cost}">Quitar</button></td>
                     `;
+    
                     selectedFeatures.appendChild(row);
     
-                    totalCost += cost;
-                    totalCostElement.textContent = totalCost;
-                }
+                    document.getElementById('totalCost').textContent = totalCost;
+                    document.getElementById('totalCost2').textContent = totalCost;
+    
+                    row.querySelector('.remove-feature').addEventListener('click', () => {
+                        totalCost -= cost;
+                        document.getElementById('totalCost').textContent = totalCost;
+                        selectedFeatures.removeChild(row);
+                    });
+                });
             });
     
-            selectedFeatures.addEventListener('click', function (event) {
-                if (event.target.classList.contains('remove-feature')) {
-                    const row = event.target.closest('tr');
-                    const cost = parseInt(event.target.dataset.cost);
+            document.getElementById('generatePdfBtn').addEventListener('click', () => {
+                const doc = new jsPDF();
+                doc.text('Cotización Chatbots', 20, 20);
+                let y = 30;
     
-                    totalCost -= cost;
-                    totalCostElement.textContent = totalCost;
+                selectedFeatures.querySelectorAll('tr').forEach(row => {
+                    const element = row.children[0].textContent;
+                    const cost = row.children[1].textContent;
+                    doc.text(`${element}: ${cost}`, 20, y);
+                    y += 10;
+                });
     
-                    selectedFeatures.removeChild(row);
-                }
+                doc.text(`Total: ${totalCost} MXN`, 20, y);
+                doc.save('cotizacion.pdf');
             });
         });
-    </script>
-
-    <script>
-        document.getElementById('getQuoteBtn').addEventListener('click', generatePDF);
-
-        function generatePDF() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-
-            let y = 10;
-            doc.setFontSize(16);
-            doc.text("Cotización", 10, y);
-            y += 10;
-
-            const selectedFeatures = document.getElementById('selectedFeatures').getElementsByTagName('tr');
-            let totalCost = document.getElementById('totalCost').textContent;
-
-            for (let row of selectedFeatures) {
-                const element = row.cells[0].textContent;
-                const cost = row.cells[1].textContent;
-
-                doc.setFontSize(12);
-                doc.text(`Elemento: ${element}`, 10, y);
-                y += 10;
-                doc.text(`Costo: ${cost}`, 10, y);
-                y += 10;
-            }
-
-            y += 10;
-            doc.setFontSize(14);
-            doc.text(`Costo Total: $${totalCost}`, 10, y);
-
-            doc.save('Cotizacion.pdf');
-        }
     </script>
 </body>
 
