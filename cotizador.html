@@ -652,6 +652,7 @@
                     row.querySelector('.remove-feature').addEventListener('click', () => {
                         totalCost -= cost;
                         document.getElementById('totalCost').textContent = totalCost;
+                        document.getElementById('totalCost2').textContent = totalCost;
                         selectedFeatures.removeChild(row);
                     });
                 });
